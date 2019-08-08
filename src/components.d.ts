@@ -6,7 +6,19 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  StkButtonType,
+} from './components/stk-components/general/button/stk-button';
+import {
+  StkSpan,
+} from './components/stk-components/grid/stk-col/stk-col';
+import {
+  inputType,
+} from './components/stk-components/data-entry/input/stk-input';
+import {
+  Validator,
+  ValidatorEntry,
+} from './validators/validator';
 
 export namespace Components {
   interface MyComponent {
@@ -23,6 +35,109 @@ export namespace Components {
     */
     'middle': string;
   }
+  interface StkBreadcrumb {}
+  interface StkBreadcrumbItem {
+    'label': string;
+  }
+  interface StkButton {
+    'block': boolean;
+    'disabled': boolean;
+    'icon': string;
+    'loading': boolean;
+    'type': StkButtonType;
+  }
+  interface StkButtonGroup {}
+  interface StkCol {
+    'lg': StkSpan;
+    'lgOffset': StkSpan;
+    'md': StkSpan;
+    'mdOffset': StkSpan;
+    'offset': StkSpan;
+    'sm': StkSpan;
+    'smOffset': StkSpan;
+    'span': StkSpan;
+    'xl': StkSpan;
+    'xlOffset': StkSpan;
+    'xs': StkSpan;
+    'xsOffset': StkSpan;
+  }
+  interface StkContent {}
+  interface StkFooter {}
+  interface StkHeader {}
+  interface StkHeaderLogo {}
+  interface StkHeaderMenu {}
+  interface StkInput {
+    'allowClear': boolean;
+    'defaultValue': string;
+    'disabled': boolean;
+    'label': string;
+    'max': number;
+    'maxLength': number;
+    'min': number;
+    'orientation': string;
+    'placeholder': string;
+    'required': boolean;
+    'rows': number;
+    'step': number;
+    'type': inputType;
+    'validator': Array<string | ValidatorEntry | Validator<string>>;
+    'value': string;
+  }
+  interface StkInputCurrency {
+    'allowClear': boolean;
+    'defaultValue': string;
+    'disabled': boolean;
+    'maxLength': number;
+    'placeholder': string;
+    'validator': Array<string | ValidatorEntry | Validator<string>>;
+    'value': string;
+  }
+  interface StkInputEmail {
+    'allowClear': boolean;
+    'defaultValue': string;
+    'disabled': boolean;
+    'maxLength': number;
+    'placeholder': string;
+    'required': boolean;
+    'validator': Array<string | ValidatorEntry | Validator<string>>;
+    'value': string;
+  }
+  interface StkInputPassword {
+    'allowClear': boolean;
+    'defaultValue': string;
+    'disabled': boolean;
+    'maxLength': number;
+    'placeholder': string;
+    'validator': Array<string | ValidatorEntry | Validator<string>>;
+    'value': string;
+  }
+  interface StkInputPhone {
+    'allowClear': boolean;
+    'defaultValue': string;
+    'disabled': boolean;
+    'maxLength': number;
+    'placeholder': string;
+    'validator': Array<string | ValidatorEntry | Validator<string>>;
+    'value': string;
+  }
+  interface StkInputText {
+    'allowClear': boolean;
+    'defaultValue': string;
+    'disabled': boolean;
+    'maxLength': number;
+    'placeholder': string;
+    'validator': Array<string | ValidatorEntry | Validator<string>>;
+    'value': string;
+  }
+  interface StkLayout {
+    'innerLayout': boolean;
+  }
+  interface StkMenuItem {
+    'label': string;
+  }
+  interface StkRow {}
+  interface StkSider {}
+  interface StkSiderMenu {}
 }
 
 declare global {
@@ -33,8 +148,155 @@ declare global {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
   };
+
+  interface HTMLStkBreadcrumbElement extends Components.StkBreadcrumb, HTMLStencilElement {}
+  var HTMLStkBreadcrumbElement: {
+    prototype: HTMLStkBreadcrumbElement;
+    new (): HTMLStkBreadcrumbElement;
+  };
+
+  interface HTMLStkBreadcrumbItemElement extends Components.StkBreadcrumbItem, HTMLStencilElement {}
+  var HTMLStkBreadcrumbItemElement: {
+    prototype: HTMLStkBreadcrumbItemElement;
+    new (): HTMLStkBreadcrumbItemElement;
+  };
+
+  interface HTMLStkButtonElement extends Components.StkButton, HTMLStencilElement {}
+  var HTMLStkButtonElement: {
+    prototype: HTMLStkButtonElement;
+    new (): HTMLStkButtonElement;
+  };
+
+  interface HTMLStkButtonGroupElement extends Components.StkButtonGroup, HTMLStencilElement {}
+  var HTMLStkButtonGroupElement: {
+    prototype: HTMLStkButtonGroupElement;
+    new (): HTMLStkButtonGroupElement;
+  };
+
+  interface HTMLStkColElement extends Components.StkCol, HTMLStencilElement {}
+  var HTMLStkColElement: {
+    prototype: HTMLStkColElement;
+    new (): HTMLStkColElement;
+  };
+
+  interface HTMLStkContentElement extends Components.StkContent, HTMLStencilElement {}
+  var HTMLStkContentElement: {
+    prototype: HTMLStkContentElement;
+    new (): HTMLStkContentElement;
+  };
+
+  interface HTMLStkFooterElement extends Components.StkFooter, HTMLStencilElement {}
+  var HTMLStkFooterElement: {
+    prototype: HTMLStkFooterElement;
+    new (): HTMLStkFooterElement;
+  };
+
+  interface HTMLStkHeaderElement extends Components.StkHeader, HTMLStencilElement {}
+  var HTMLStkHeaderElement: {
+    prototype: HTMLStkHeaderElement;
+    new (): HTMLStkHeaderElement;
+  };
+
+  interface HTMLStkHeaderLogoElement extends Components.StkHeaderLogo, HTMLStencilElement {}
+  var HTMLStkHeaderLogoElement: {
+    prototype: HTMLStkHeaderLogoElement;
+    new (): HTMLStkHeaderLogoElement;
+  };
+
+  interface HTMLStkHeaderMenuElement extends Components.StkHeaderMenu, HTMLStencilElement {}
+  var HTMLStkHeaderMenuElement: {
+    prototype: HTMLStkHeaderMenuElement;
+    new (): HTMLStkHeaderMenuElement;
+  };
+
+  interface HTMLStkInputElement extends Components.StkInput, HTMLStencilElement {}
+  var HTMLStkInputElement: {
+    prototype: HTMLStkInputElement;
+    new (): HTMLStkInputElement;
+  };
+
+  interface HTMLStkInputCurrencyElement extends Components.StkInputCurrency, HTMLStencilElement {}
+  var HTMLStkInputCurrencyElement: {
+    prototype: HTMLStkInputCurrencyElement;
+    new (): HTMLStkInputCurrencyElement;
+  };
+
+  interface HTMLStkInputEmailElement extends Components.StkInputEmail, HTMLStencilElement {}
+  var HTMLStkInputEmailElement: {
+    prototype: HTMLStkInputEmailElement;
+    new (): HTMLStkInputEmailElement;
+  };
+
+  interface HTMLStkInputPasswordElement extends Components.StkInputPassword, HTMLStencilElement {}
+  var HTMLStkInputPasswordElement: {
+    prototype: HTMLStkInputPasswordElement;
+    new (): HTMLStkInputPasswordElement;
+  };
+
+  interface HTMLStkInputPhoneElement extends Components.StkInputPhone, HTMLStencilElement {}
+  var HTMLStkInputPhoneElement: {
+    prototype: HTMLStkInputPhoneElement;
+    new (): HTMLStkInputPhoneElement;
+  };
+
+  interface HTMLStkInputTextElement extends Components.StkInputText, HTMLStencilElement {}
+  var HTMLStkInputTextElement: {
+    prototype: HTMLStkInputTextElement;
+    new (): HTMLStkInputTextElement;
+  };
+
+  interface HTMLStkLayoutElement extends Components.StkLayout, HTMLStencilElement {}
+  var HTMLStkLayoutElement: {
+    prototype: HTMLStkLayoutElement;
+    new (): HTMLStkLayoutElement;
+  };
+
+  interface HTMLStkMenuItemElement extends Components.StkMenuItem, HTMLStencilElement {}
+  var HTMLStkMenuItemElement: {
+    prototype: HTMLStkMenuItemElement;
+    new (): HTMLStkMenuItemElement;
+  };
+
+  interface HTMLStkRowElement extends Components.StkRow, HTMLStencilElement {}
+  var HTMLStkRowElement: {
+    prototype: HTMLStkRowElement;
+    new (): HTMLStkRowElement;
+  };
+
+  interface HTMLStkSiderElement extends Components.StkSider, HTMLStencilElement {}
+  var HTMLStkSiderElement: {
+    prototype: HTMLStkSiderElement;
+    new (): HTMLStkSiderElement;
+  };
+
+  interface HTMLStkSiderMenuElement extends Components.StkSiderMenu, HTMLStencilElement {}
+  var HTMLStkSiderMenuElement: {
+    prototype: HTMLStkSiderMenuElement;
+    new (): HTMLStkSiderMenuElement;
+  };
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement;
+    'stk-breadcrumb': HTMLStkBreadcrumbElement;
+    'stk-breadcrumb-item': HTMLStkBreadcrumbItemElement;
+    'stk-button': HTMLStkButtonElement;
+    'stk-button-group': HTMLStkButtonGroupElement;
+    'stk-col': HTMLStkColElement;
+    'stk-content': HTMLStkContentElement;
+    'stk-footer': HTMLStkFooterElement;
+    'stk-header': HTMLStkHeaderElement;
+    'stk-header-logo': HTMLStkHeaderLogoElement;
+    'stk-header-menu': HTMLStkHeaderMenuElement;
+    'stk-input': HTMLStkInputElement;
+    'stk-input-currency': HTMLStkInputCurrencyElement;
+    'stk-input-email': HTMLStkInputEmailElement;
+    'stk-input-password': HTMLStkInputPasswordElement;
+    'stk-input-phone': HTMLStkInputPhoneElement;
+    'stk-input-text': HTMLStkInputTextElement;
+    'stk-layout': HTMLStkLayoutElement;
+    'stk-menu-item': HTMLStkMenuItemElement;
+    'stk-row': HTMLStkRowElement;
+    'stk-sider': HTMLStkSiderElement;
+    'stk-sider-menu': HTMLStkSiderMenuElement;
   }
 }
 
@@ -53,9 +315,139 @@ declare namespace LocalJSX {
     */
     'middle'?: string;
   }
+  interface StkBreadcrumb extends JSXBase.HTMLAttributes<HTMLStkBreadcrumbElement> {}
+  interface StkBreadcrumbItem extends JSXBase.HTMLAttributes<HTMLStkBreadcrumbItemElement> {
+    'label'?: string;
+  }
+  interface StkButton extends JSXBase.HTMLAttributes<HTMLStkButtonElement> {
+    'block'?: boolean;
+    'disabled'?: boolean;
+    'icon'?: string;
+    'loading'?: boolean;
+    'type'?: StkButtonType;
+  }
+  interface StkButtonGroup extends JSXBase.HTMLAttributes<HTMLStkButtonGroupElement> {}
+  interface StkCol extends JSXBase.HTMLAttributes<HTMLStkColElement> {
+    'lg'?: StkSpan;
+    'lgOffset'?: StkSpan;
+    'md'?: StkSpan;
+    'mdOffset'?: StkSpan;
+    'offset'?: StkSpan;
+    'sm'?: StkSpan;
+    'smOffset'?: StkSpan;
+    'span'?: StkSpan;
+    'xl'?: StkSpan;
+    'xlOffset'?: StkSpan;
+    'xs'?: StkSpan;
+    'xsOffset'?: StkSpan;
+  }
+  interface StkContent extends JSXBase.HTMLAttributes<HTMLStkContentElement> {}
+  interface StkFooter extends JSXBase.HTMLAttributes<HTMLStkFooterElement> {}
+  interface StkHeader extends JSXBase.HTMLAttributes<HTMLStkHeaderElement> {}
+  interface StkHeaderLogo extends JSXBase.HTMLAttributes<HTMLStkHeaderLogoElement> {}
+  interface StkHeaderMenu extends JSXBase.HTMLAttributes<HTMLStkHeaderMenuElement> {}
+  interface StkInput extends JSXBase.HTMLAttributes<HTMLStkInputElement> {
+    'allowClear'?: boolean;
+    'defaultValue'?: string;
+    'disabled'?: boolean;
+    'label'?: string;
+    'max'?: number;
+    'maxLength'?: number;
+    'min'?: number;
+    'onChanged'?: (event: CustomEvent<string>) => void;
+    'orientation'?: string;
+    'placeholder'?: string;
+    'required'?: boolean;
+    'rows'?: number;
+    'step'?: number;
+    'type'?: inputType;
+    'validator'?: Array<string | ValidatorEntry | Validator<string>>;
+    'value'?: string;
+  }
+  interface StkInputCurrency extends JSXBase.HTMLAttributes<HTMLStkInputCurrencyElement> {
+    'allowClear'?: boolean;
+    'defaultValue'?: string;
+    'disabled'?: boolean;
+    'maxLength'?: number;
+    'onChanged'?: (event: CustomEvent<string>) => void;
+    'placeholder'?: string;
+    'validator'?: Array<string | ValidatorEntry | Validator<string>>;
+    'value'?: string;
+  }
+  interface StkInputEmail extends JSXBase.HTMLAttributes<HTMLStkInputEmailElement> {
+    'allowClear'?: boolean;
+    'defaultValue'?: string;
+    'disabled'?: boolean;
+    'maxLength'?: number;
+    'onChanged'?: (event: CustomEvent<string>) => void;
+    'placeholder'?: string;
+    'required'?: boolean;
+    'validator'?: Array<string | ValidatorEntry | Validator<string>>;
+    'value'?: string;
+  }
+  interface StkInputPassword extends JSXBase.HTMLAttributes<HTMLStkInputPasswordElement> {
+    'allowClear'?: boolean;
+    'defaultValue'?: string;
+    'disabled'?: boolean;
+    'maxLength'?: number;
+    'onChanged'?: (event: CustomEvent<string>) => void;
+    'placeholder'?: string;
+    'validator'?: Array<string | ValidatorEntry | Validator<string>>;
+    'value'?: string;
+  }
+  interface StkInputPhone extends JSXBase.HTMLAttributes<HTMLStkInputPhoneElement> {
+    'allowClear'?: boolean;
+    'defaultValue'?: string;
+    'disabled'?: boolean;
+    'maxLength'?: number;
+    'onChanged'?: (event: CustomEvent<string>) => void;
+    'placeholder'?: string;
+    'validator'?: Array<string | ValidatorEntry | Validator<string>>;
+    'value'?: string;
+  }
+  interface StkInputText extends JSXBase.HTMLAttributes<HTMLStkInputTextElement> {
+    'allowClear'?: boolean;
+    'defaultValue'?: string;
+    'disabled'?: boolean;
+    'maxLength'?: number;
+    'onChanged'?: (event: CustomEvent<string>) => void;
+    'placeholder'?: string;
+    'validator'?: Array<string | ValidatorEntry | Validator<string>>;
+    'value'?: string;
+  }
+  interface StkLayout extends JSXBase.HTMLAttributes<HTMLStkLayoutElement> {
+    'innerLayout'?: boolean;
+  }
+  interface StkMenuItem extends JSXBase.HTMLAttributes<HTMLStkMenuItemElement> {
+    'label'?: string;
+  }
+  interface StkRow extends JSXBase.HTMLAttributes<HTMLStkRowElement> {}
+  interface StkSider extends JSXBase.HTMLAttributes<HTMLStkSiderElement> {}
+  interface StkSiderMenu extends JSXBase.HTMLAttributes<HTMLStkSiderMenuElement> {}
 
   interface IntrinsicElements {
     'my-component': MyComponent;
+    'stk-breadcrumb': StkBreadcrumb;
+    'stk-breadcrumb-item': StkBreadcrumbItem;
+    'stk-button': StkButton;
+    'stk-button-group': StkButtonGroup;
+    'stk-col': StkCol;
+    'stk-content': StkContent;
+    'stk-footer': StkFooter;
+    'stk-header': StkHeader;
+    'stk-header-logo': StkHeaderLogo;
+    'stk-header-menu': StkHeaderMenu;
+    'stk-input': StkInput;
+    'stk-input-currency': StkInputCurrency;
+    'stk-input-email': StkInputEmail;
+    'stk-input-password': StkInputPassword;
+    'stk-input-phone': StkInputPhone;
+    'stk-input-text': StkInputText;
+    'stk-layout': StkLayout;
+    'stk-menu-item': StkMenuItem;
+    'stk-row': StkRow;
+    'stk-sider': StkSider;
+    'stk-sider-menu': StkSiderMenu;
   }
 }
 

@@ -19,7 +19,7 @@ export type inputType =
   shadow: false
 })
 export class StkInput {
-  @Prop({ reflect: true }) type: inputType = "text";
+  @Prop({ reflect: true }) type: inputType;
   @Prop({ reflect: true }) defaultValue: string;
   @Prop({ mutable:true })  value: string ;
   @Prop({ reflect: true }) placeholder: string = "";
@@ -34,7 +34,7 @@ export class StkInput {
   @Prop({ reflect: true }) orientation: string ;//horizontal(same row) or vertical(same column)
   @Prop({ reflect: true }) label: string;
   @State() clear: boolean=false;
-
+  @State() orientationclass: string="";
   textInput!: HTMLInputElement;
 
 
@@ -74,8 +74,9 @@ export class StkInput {
   }
 
 
-
   render() {
+    if (this.orientation==="horizontal") 
+      this.orientationclass="label-stk-input-"+this.type
     return this.renderInput();
   }
 
@@ -85,15 +86,16 @@ export class StkInput {
       case "text":
         if (this.allowClear && !this.disabled) {
           return (
-             <div>
+             <div >
               {this.required ? 
-                <label> { this.label } <font color="red"> *</font> </label>
+                <label > { this.label } <font color="red"> *</font> </label>
                :<label> { this.label } </label>
               }
               <stk-input-text
               value={!this.value ? this.defaultValue : this.value}
               placeholder={this.placeholder}
               disabled={this.disabled}
+              class={this.orientationclass} 
               validator={[
                 {
                  name: 'length',
@@ -148,6 +150,7 @@ export class StkInput {
           value={!this.value ? this.defaultValue : this.value}
           placeholder={this.placeholder}
           disabled={this.disabled}
+          class={this.orientationclass} 
           validator={[
             {
              name: 'length',
@@ -175,6 +178,7 @@ export class StkInput {
                 value={!this.value ? this.defaultValue : this.value}
                 placeholder={this.placeholder}
                 disabled={this.disabled}
+                class={this.orientationclass} 
                 validator={['email']}
           />
           </div>
@@ -191,6 +195,7 @@ export class StkInput {
              value={!this.value ? this.defaultValue : this.value}
              placeholder={this.placeholder}
              disabled={this.disabled}
+             class={this.orientationclass} 
              validator={[
               {
                name: 'length',
@@ -217,6 +222,7 @@ export class StkInput {
             value={!this.value ? this.defaultValue : this.value}
             placeholder={this.placeholder}
             disabled={this.disabled}
+            class={this.orientationclass} 
             validator={[
               {
                name: 'length',

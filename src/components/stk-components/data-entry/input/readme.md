@@ -10,12 +10,10 @@
 | Property       | Attribute       | Description | Type                                                | Default     |
 | -------------- | --------------- | ----------- | --------------------------------------------------- | ----------- |
 | `allowClear`   | `allow-clear`   |             | `boolean`                                           | `false`     |
-| `defaultValue` | `default-value` |             | `string`                                            | `"default"` |
+| `defaultValue` | `default-value` |             | `string`                                            | `undefined` |
 | `disabled`     | `disabled`      |             | `boolean`                                           | `false`     |
-| `maxLength`    | `max-length`    |             | `number`                                            | `128`       |
-| `placeholder`  | `placeholder`   |             | `string`                                            | `""`        |
-| `rows`         | `rows`          |             | `number`                                            | `4`         |
-| `step`         | `step`          |             | `number`                                            | `1`         |
+| `maxLength`    | `max-length`    |             | `number`                                            | `undefined` |
+| `placeholder`  | `placeholder`   |             | `string`                                            | `undefined` |
 | `validator`    | --              |             | `(string \| ValidatorEntry \| Validator<string>)[]` | `undefined` |
 | `value`        | `value`         |             | `string`                                            | `undefined` |
 
@@ -36,8 +34,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  stk-input --> stk-input-email
-  style stk-input-email fill:#f9f,stroke:#333,stroke-width:4px
+  stk-input --> stk-input-text
+  style stk-input-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

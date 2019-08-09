@@ -1,3 +1,4 @@
+
 .stk-input {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -854,7 +855,24 @@ textarea.stk-input-number {
   color: rgba(0, 0, 0, 0.25);
 }
 
-.stk-input, label {
-  float:left;
-  margin:5px;
+
+.label-stk-input-text {
+  display: inline-block;
 }
+
+.label-stk-input-email {
+  display: inline-block;
+}
+
+.label-stk-input-currency {
+  display: inline-block;
+}
+
+.label-stk-input-phone {
+  display: inline-block;
+}
+
+.label-stk-input-password {
+  display: inline-block;
+}
+

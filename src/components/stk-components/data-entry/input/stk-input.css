@@ -860,11 +860,23 @@ textarea.stk-input-number {
   display: inline-block;
 }
 
+.label-stk-input-text-area {
+  display: inline-block;
+}
+
 .label-stk-input-email {
   display: inline-block;
 }
 
 .label-stk-input-currency {
+  display: inline-block;
+}
+
+.label-stk-input-number {
+  display: inline-block;
+}
+
+.label-stk-input-integer {
   display: inline-block;
 }
 

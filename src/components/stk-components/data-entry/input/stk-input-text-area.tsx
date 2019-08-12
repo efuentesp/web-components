@@ -53,11 +53,13 @@ export class StkInputTextArea {
     this.textInput.value=null;
   }
 
-
   render() {
     return (
         <div>
         <span class="stk-input-affix-wrapper">
+          <span class="stk-input-prefix">
+            <i class="fa fa-font" />
+          </span>
          <textarea
            value={!this.value ? this.defaultValue : this.value}
            placeholder={this.placeholder}

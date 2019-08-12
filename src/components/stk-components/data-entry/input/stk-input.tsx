@@ -4,7 +4,7 @@ import { getValidator } from '../../../../validators/validator.factory';
 
 export type inputType =
   | "text"
-  | "textarea"
+  | "text-area"
   | "password"
   | "number"
   | "integer"
@@ -18,6 +18,7 @@ export type inputType =
   styleUrl: "stk-input.css",
   shadow: false
 })
+
 export class StkInput {
   @Prop({ reflect: true }) type: inputType;
   @Prop({ reflect: true }) defaultValue: string;
@@ -130,7 +131,7 @@ export class StkInput {
           );
         }
     
-      case "textarea":
+      case "text-area":
           return (
             <div>
             {this.required ? 

@@ -1,11 +1,15 @@
 import { Validator, ValidatorEntry, defaultValidator, combineValidators } from './validator'
 import { lengthValidator }   from './length-validator/length-validator';
+import { minMaxValidator }   from './min-max-validator/min-max-validator';
 import { emailValidator }    from './email-validator/email-validator';
+import { integerValidator }  from './integer-validator/integer-validator';
 import { requiredValidator } from './required-validator/required-validator';
 
 export enum ValidatorsName {
     length   = 'length',
+    minmax   = 'min-max',
     email    = 'email',
+    integer  = 'integer',
     required = 'required'
 }
 
@@ -27,10 +31,15 @@ export function validatorFactory(name: string, options: any): Validator<any> {
     switch (name) {
         case (ValidatorsName.length):
            return lengthValidator(options.params);
+        case (ValidatorsName.minmax):
+            return minMaxValidator(options.params);
         case (ValidatorsName.required):
            return requiredValidator(options.required);
         case (ValidatorsName.email):
            return emailValidator;
+        case (ValidatorsName.integer):
+           return integerValidator;
+        
         default:
            return defaultValidator;
     }

@@ -36,7 +36,9 @@ export namespace Components {
     'label': string;
     'max': number;
     'maxLength': number;
+    'maxsize': number;
     'min': number;
+    'minsize': number;
     'orientation': string;
     'placeholder': string;
     'required': boolean;
@@ -52,6 +54,7 @@ export namespace Components {
     'disabled': boolean;
     'maxLength': number;
     'placeholder': string;
+    'step': number;
     'validator': Array<string | ValidatorEntry | Validator<string>>;
     'value': string;
   }
@@ -62,6 +65,26 @@ export namespace Components {
     'maxLength': number;
     'placeholder': string;
     'required': boolean;
+    'validator': Array<string | ValidatorEntry | Validator<string>>;
+    'value': string;
+  }
+  interface StkInputInteger {
+    'allowClear': boolean;
+    'defaultValue': string;
+    'disabled': boolean;
+    'maxLength': number;
+    'placeholder': string;
+    'step': number;
+    'validator': Array<string | ValidatorEntry | Validator<string>>;
+    'value': string;
+  }
+  interface StkInputNumber {
+    'allowClear': boolean;
+    'defaultValue': string;
+    'disabled': boolean;
+    'maxLength': number;
+    'placeholder': string;
+    'step': number;
     'validator': Array<string | ValidatorEntry | Validator<string>>;
     'value': string;
   }
@@ -121,6 +144,18 @@ declare global {
     new (): HTMLStkInputEmailElement;
   };
 
+  interface HTMLStkInputIntegerElement extends Components.StkInputInteger, HTMLStencilElement {}
+  var HTMLStkInputIntegerElement: {
+    prototype: HTMLStkInputIntegerElement;
+    new (): HTMLStkInputIntegerElement;
+  };
+
+  interface HTMLStkInputNumberElement extends Components.StkInputNumber, HTMLStencilElement {}
+  var HTMLStkInputNumberElement: {
+    prototype: HTMLStkInputNumberElement;
+    new (): HTMLStkInputNumberElement;
+  };
+
   interface HTMLStkInputPasswordElement extends Components.StkInputPassword, HTMLStencilElement {}
   var HTMLStkInputPasswordElement: {
     prototype: HTMLStkInputPasswordElement;
@@ -143,6 +178,8 @@ declare global {
     'stk-input': HTMLStkInputElement;
     'stk-input-currency': HTMLStkInputCurrencyElement;
     'stk-input-email': HTMLStkInputEmailElement;
+    'stk-input-integer': HTMLStkInputIntegerElement;
+    'stk-input-number': HTMLStkInputNumberElement;
     'stk-input-password': HTMLStkInputPasswordElement;
     'stk-input-phone': HTMLStkInputPhoneElement;
     'stk-input-text': HTMLStkInputTextElement;
@@ -171,7 +208,9 @@ declare namespace LocalJSX {
     'label'?: string;
     'max'?: number;
     'maxLength'?: number;
+    'maxsize'?: number;
     'min'?: number;
+    'minsize'?: number;
     'onChanged'?: (event: CustomEvent<string>) => void;
     'orientation'?: string;
     'placeholder'?: string;
@@ -189,6 +228,7 @@ declare namespace LocalJSX {
     'maxLength'?: number;
     'onChanged'?: (event: CustomEvent<string>) => void;
     'placeholder'?: string;
+    'step'?: number;
     'validator'?: Array<string | ValidatorEntry | Validator<string>>;
     'value'?: string;
   }
@@ -200,6 +240,28 @@ declare namespace LocalJSX {
     'onChanged'?: (event: CustomEvent<string>) => void;
     'placeholder'?: string;
     'required'?: boolean;
+    'validator'?: Array<string | ValidatorEntry | Validator<string>>;
+    'value'?: string;
+  }
+  interface StkInputInteger extends JSXBase.HTMLAttributes<HTMLStkInputIntegerElement> {
+    'allowClear'?: boolean;
+    'defaultValue'?: string;
+    'disabled'?: boolean;
+    'maxLength'?: number;
+    'onChanged'?: (event: CustomEvent<string>) => void;
+    'placeholder'?: string;
+    'step'?: number;
+    'validator'?: Array<string | ValidatorEntry | Validator<string>>;
+    'value'?: string;
+  }
+  interface StkInputNumber extends JSXBase.HTMLAttributes<HTMLStkInputNumberElement> {
+    'allowClear'?: boolean;
+    'defaultValue'?: string;
+    'disabled'?: boolean;
+    'maxLength'?: number;
+    'onChanged'?: (event: CustomEvent<string>) => void;
+    'placeholder'?: string;
+    'step'?: number;
     'validator'?: Array<string | ValidatorEntry | Validator<string>>;
     'value'?: string;
   }
@@ -239,6 +301,8 @@ declare namespace LocalJSX {
     'stk-input': StkInput;
     'stk-input-currency': StkInputCurrency;
     'stk-input-email': StkInputEmail;
+    'stk-input-integer': StkInputInteger;
+    'stk-input-number': StkInputNumber;
     'stk-input-password': StkInputPassword;
     'stk-input-phone': StkInputPhone;
     'stk-input-text': StkInputText;

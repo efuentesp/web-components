@@ -3,12 +3,12 @@ import { Validator, defaultValidator, ValidatorEntry } from '../../../../validat
 import { getValidator } from '../../../../validators/validator.factory';
 
 @Component({
-  tag: "stk-input-currency",
+  tag: "stk-input-number",
   styleUrl: "stk-input.css",
   shadow: false
 })
 
-export class StkInputCurrency {
+export class StkInputNumber {
   @Prop({ reflect: true }) defaultValue: string;
   @Prop({ mutable:true })  value: string ;
   @Prop({ reflect: true }) placeholder: string;
@@ -60,9 +60,6 @@ export class StkInputCurrency {
     return (
         <div>
         <span class="stk-input-affix-wrapper">
-          <span class="stk-input-prefix">
-            <i class="fa fa-usd" />
-          </span>
           <input
             type="number"
             value={!this.value ? this.defaultValue : this.value}

@@ -31,6 +31,8 @@ export class StkInput {
   @Prop({ reflect: true }) step: number = 1;
   @Prop({ reflect: true }) min: number ;
   @Prop({ reflect: true }) max: number ;
+  @Prop({ reflect: true }) minsize: number ;
+  @Prop({ reflect: true }) maxsize: number ;
   @Prop({ reflect: true }) orientation: string ;//horizontal(same row) or vertical(same column)
   @Prop({ reflect: true }) label: string;
   @State() clear: boolean=false;
@@ -100,9 +102,9 @@ export class StkInput {
                 {
                  name: 'length',
                   options: {
-                    params: { min:this.min, max:this.max, required:this.required,
-                              message:[{type:"min-val",message:"el valor minimo es "+ this.min },
-                                       {type:"max-val",message:"el valor máximo es "+ this.max }]
+                    params: { min:this.minsize, max:this.maxsize,
+                              message:[{type:"min-val",message:"El número mínimo de caracteres es "+ this.minsize },
+                                       {type:"max-val",message:"El número máximo de caracteres es "+ this.maxsize }]
                             } 
                   }
                 }
@@ -155,10 +157,10 @@ export class StkInput {
             {
              name: 'length',
               options: {
-                params: { min:this.min, max:this.max, required:this.required,
-                          message:[{type:"min-val",message:"el valor minimo es "+ this.min },
-                                   {type:"max-val",message:"el valor máximo es "+ this.max }]
-                        } 
+                params: { min:this.minsize, max:this.maxsize,
+                  message:[{type:"min-val",message:"El número mínimo de caracteres es "+ this.minsize },
+                           {type:"max-val",message:"El número máximo de caracteres es "+ this.maxsize }]
+                } 
               }
             }
             ]}
@@ -200,10 +202,10 @@ export class StkInput {
               {
                name: 'length',
                 options: {
-                  params: { min:this.min, max:this.max, required:this.required,
-                            message:[{type:"min-val",message:"el valor minimo es "+ this.min },
-                                     {type:"max-val",message:"el valor máximo es "+ this.max }]
-                          } 
+                  params: { min:this.minsize, max:this.maxsize, 
+                    message:[{type:"min-val",message:"El número mínimo de caracteres es "+ this.minsize },
+                             {type:"max-val",message:"El número máximo de caracteres es "+ this.maxsize }]
+                  }  
                 }
               }
               ]}
@@ -222,14 +224,15 @@ export class StkInput {
             value={!this.value ? this.defaultValue : this.value}
             placeholder={this.placeholder}
             disabled={this.disabled}
-            class={this.orientationclass} 
+            class={this.orientationclass}
+            step={this.step}
             validator={[
               {
-               name: 'length',
+               name: 'min-max',
                 options: {
-                  params: { min:this.min, max:this.max, required:this.required,
-                            message:[{type:"min-val",message:"el valor minimo es "+ this.min },
-                                     {type:"max-val",message:"el valor máximo es "+ this.max }]
+                  params: { min:this.min, max:this.max,
+                            message:[{type:"min-val",message:"El valor mínimo es "+ this.min },
+                                     {type:"max-val",message:"El valor máximo es "+ this.max }]
                           } 
                 }
               }
@@ -238,77 +241,63 @@ export class StkInput {
           </div>
       );
 
-      case "number":
-        return (
-          <div
-            class={{
-              "stk-input-number": true,
-              "stk-input-number-disabled": this.disabled
-            }}
-          >
-            <div class="stk-input-number-handler-wrap">
-              <span
-                unselectable={true}
-                role="button"
-                aria-label="Increase Value"
-                aria-disabled="false"
-                class="stk-input-number-handler stk-input-number-handler-up "
-              >
-                <i class="fa fa-chevron-up" />
-              </span>
-              <span
-                unselectable={true}
-                role="button"
-                aria-label="Decrease Value"
-                aria-disabled="false"
-                class="stk-input-number-handler stk-input-number-handler-down "
-              >
-                <i class="fas fa-chevron-down" />
-              </span>
-            </div>
-            <div
-              class="stk-input-number-input-wrap"
-              role="spinbutton"
-              aria-valuemin={this.min}
-              aria-valuemax={this.max}
-              aria-valuenow={!this.value ? this.defaultValue : this.value}
-            >
-              <input
-                type="number"
-                class="stk-input-number-input"
-                autocomplete="off"
-                min={this.min}
-                max={this.max}
-                step={this.step}
-                value={!this.value ? this.defaultValue : this.value}
-                disabled={this.disabled}
-              />
-            </div>
-          </div>
-        );
 
-        case "integer":
+      case "number":
           return (
-              <span class="stk-input-affix-wrapper">
-                <input
-                  type="number"
-                  class="stk-input"
-                  min={this.min}
-                  max={this.max}
-                  step={this.step}
-                  value={!this.value ? this.defaultValue : this.value}
-                  placeholder={this.placeholder}
-                  disabled={this.disabled}
-                  ref={(el) => this.textInput = el as HTMLInputElement}
-                />
-                <span class="stk-input-suffix" >
-                 {!this.clear
-                  ? <i class="fa fa-times-circle" onClick={this.handleClearText}/>
-                  : <i class=""/>
-                 }
-               </span>
-              </span>
-        );
+          <div>
+            {this.required ? 
+              <label> { this.label } <font color="red"> *</font> </label>
+             :<label> { this.label } </label>
+            }
+          <stk-input-number
+            value={!this.value ? this.defaultValue : this.value}
+            placeholder={this.placeholder}
+            disabled={this.disabled}
+            class={this.orientationclass}
+            step={this.step}
+            validator={[
+              {
+               name: 'min-max',
+                options: {
+                  params: { min:this.min, max:this.max,
+                            message:[{type:"min-val",message:"El valor mínimo es "+ this.min },
+                                     {type:"max-val",message:"El valor máximo es "+ this.max }]
+                          } 
+                }
+              }
+              ]}
+          />
+          </div>
+      );
+
+      case "integer":
+          return (
+          <div>
+            {this.required ? 
+              <label> { this.label } <font color="red"> *</font> </label>
+             :<label> { this.label } </label>
+            }
+          <stk-input-integer
+            value={!this.value ? this.defaultValue : this.value}
+            placeholder={this.placeholder}
+            disabled={this.disabled}
+            class={this.orientationclass}
+            step={this.step}
+            validator={[
+              {
+               name: 'min-max',
+                options: {
+                  params: { min:this.min, max:this.max,
+                            message:[{type:"min-val",message:"El valor mínimo es "+ this.min },
+                                     {type:"max-val",message:"El valor máximo es "+ this.max }]
+                          } 
+                }
+              },
+              'integer'
+              ]}
+          />
+          </div>
+      );
       default:
         break;
     }

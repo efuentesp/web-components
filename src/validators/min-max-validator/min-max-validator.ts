@@ -2,24 +2,21 @@ import { Validator } from '../validator';
 
 
 
-export function lengthValidator(params :ILengthValidator ): Validator<string> {
+export function minMaxValidator(params :ILengthValidator ): Validator<string> {
     return {
         validate: (value: string) => {
             value = value || '';
             if (params.min && params.max) {
-                return params.min <= value.length && value.length <= params.max;
+                return params.min <= Number(value) && Number(value) <= params.max;
             }
             if (params.min) {
-                return params.min <= value.length;
+                return params.min <= Number(value);
             }
             if (params.max) {
-                return value.length <= params.max;
+                return Number(value) <= params.max;
             } 
             return true;
         },
-        //requiredMessage:
-        // params.required && params.message[2].type==="required" ? `${params.message[2].message} ` :''
-        //,
         errorMessage:
         params.min && params.max && 
         params.message[0].type==="min-val" &&

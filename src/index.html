@@ -50,8 +50,8 @@
         value="ABCDE"
         placeholder="Placeholder..."
         allow-clear
-        min=2
-        max=10
+        minsize=2
+        maxsize=10
         required
         label="Input Texto"
         orientation="horizontal"
@@ -62,8 +62,8 @@
         value="ABCDE"
         placeholder="Placeholder..."
         allow-clear
-        min=2
-        max=12
+        minsize=2
+        maxsize=12
         required
         label="Input Texto Vertical (default)"
       ></stk-input>
@@ -82,21 +82,32 @@
       <stk-input
         label="Input Moneda"
         type="currency"
-        default-value="1"
-        value="10"
-        step="0.1"
+        default-value="10.0"
+        value="10.0"
+        step=".01"
         min=2
         max=11
         allow-clear
         placeholder="Currency..."
       ></stk-input>
       <stk-input
+        label="Input Entero"
+        type="integer"
+        default-value="13"
+        value="13"
+        step="1"
+        min=3
+        max=14
+        allow-clear
+        placeholder="Entero..."
+      ></stk-input>
+      <stk-input
         label="Input Teléfono"
         type="phone"
         default-value="+52 1 999 99 99"
         value=""
-        min=10
-        max=20
+        minsize=10
+        maxsize=20
         allow-clear
         placeholder="Phone..."
       ></stk-input>

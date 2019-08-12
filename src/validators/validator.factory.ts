@@ -1,13 +1,15 @@
 import { Validator, ValidatorEntry, defaultValidator, combineValidators } from './validator'
-import { lengthValidator }   from './length-validator/length-validator';
-import { minMaxValidator }   from './min-max-validator/min-max-validator';
-import { emailValidator }    from './email-validator/email-validator';
-import { integerValidator }  from './integer-validator/integer-validator';
-import { requiredValidator } from './required-validator/required-validator';
+import { lengthValidator     } from './length-validator/length-validator';
+import { minMaxValidator     } from './min-max-validator/min-max-validator';
+import { numberOfLinesValidator } from './number-of-lines-validator/number-of-lines-validator';
+import { emailValidator      } from './email-validator/email-validator';
+import { integerValidator    } from './integer-validator/integer-validator';
+import { requiredValidator   } from './required-validator/required-validator';
 
 export enum ValidatorsName {
     length   = 'length',
     minmax   = 'min-max',
+    lines    = 'lines',
     email    = 'email',
     integer  = 'integer',
     required = 'required'
@@ -35,6 +37,8 @@ export function validatorFactory(name: string, options: any): Validator<any> {
             return minMaxValidator(options.params);
         case (ValidatorsName.required):
            return requiredValidator(options.required);
+        case (ValidatorsName.lines):
+           return numberOfLinesValidator(options.params);
         case (ValidatorsName.email):
            return emailValidator;
         case (ValidatorsName.integer):

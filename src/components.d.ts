@@ -115,6 +115,16 @@ export namespace Components {
     'validator': Array<string | ValidatorEntry | Validator<string>>;
     'value': string;
   }
+  interface StkInputTextArea {
+    'allowClear': boolean;
+    'defaultValue': string;
+    'disabled': boolean;
+    'maxLength': number;
+    'placeholder': string;
+    'rows': number;
+    'validator': Array<string | ValidatorEntry | Validator<string>>;
+    'value': string;
+  }
 }
 
 declare global {
@@ -173,6 +183,12 @@ declare global {
     prototype: HTMLStkInputTextElement;
     new (): HTMLStkInputTextElement;
   };
+
+  interface HTMLStkInputTextAreaElement extends Components.StkInputTextArea, HTMLStencilElement {}
+  var HTMLStkInputTextAreaElement: {
+    prototype: HTMLStkInputTextAreaElement;
+    new (): HTMLStkInputTextAreaElement;
+  };
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement;
     'stk-input': HTMLStkInputElement;
@@ -183,6 +199,7 @@ declare global {
     'stk-input-password': HTMLStkInputPasswordElement;
     'stk-input-phone': HTMLStkInputPhoneElement;
     'stk-input-text': HTMLStkInputTextElement;
+    'stk-input-text-area': HTMLStkInputTextAreaElement;
   }
 }
 
@@ -295,6 +312,17 @@ declare namespace LocalJSX {
     'validator'?: Array<string | ValidatorEntry | Validator<string>>;
     'value'?: string;
   }
+  interface StkInputTextArea extends JSXBase.HTMLAttributes<HTMLStkInputTextAreaElement> {
+    'allowClear'?: boolean;
+    'defaultValue'?: string;
+    'disabled'?: boolean;
+    'maxLength'?: number;
+    'onChanged'?: (event: CustomEvent<string>) => void;
+    'placeholder'?: string;
+    'rows'?: number;
+    'validator'?: Array<string | ValidatorEntry | Validator<string>>;
+    'value'?: string;
+  }
 
   interface IntrinsicElements {
     'my-component': MyComponent;
@@ -306,6 +334,7 @@ declare namespace LocalJSX {
     'stk-input-password': StkInputPassword;
     'stk-input-phone': StkInputPhone;
     'stk-input-text': StkInputText;
+    'stk-input-text-area': StkInputTextArea;
   }
 }
 

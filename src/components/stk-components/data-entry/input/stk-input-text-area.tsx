@@ -3,23 +3,22 @@ import { Validator, defaultValidator, ValidatorEntry } from '../../../../validat
 import { getValidator } from '../../../../validators/validator.factory';
 
 @Component({
-  tag: "stk-input-email",
+  tag: "stk-input-text-area",
   styleUrl: "stk-input.css",
   shadow: false
 })
 
-export class StkInputEmail {
+export class StkInputTextArea {
   @Prop({ reflect: true }) defaultValue: string;
   @Prop({ mutable:true })  value: string ;
   @Prop({ reflect: true }) placeholder: string;
-  @Prop({ reflect: true }) disabled: boolean = false;
+  @Prop({ reflect: true }) disabled: boolean;
   @Prop({ reflect: true }) allowClear: boolean = false;
   @Prop({ reflect: true }) maxLength: number;
-  @Prop({ reflect: true }) required: boolean;
+  @Prop({ reflect: true }) rows: number;
   @State() clear: boolean=false;
 
-  textInput!: HTMLInputElement;
-
+  textInput!: HTMLTextAreaElement;
   @Prop() validator: Array<string | ValidatorEntry | Validator<string>>;
 
   @Event() changed: EventEmitter<string>;
@@ -58,32 +57,28 @@ export class StkInputEmail {
   render() {
     return (
         <div>
-        <span class="stk-input-password stk-input-affix-wrapper">
-          <span class="stk-input-prefix">
-            <i class="fa fa-envelope-o" />
-          </span>
-          <input
-            type="email"
-            value={!this.value ? this.defaultValue : this.value}
-            placeholder={this.placeholder}
-            disabled={this.disabled}
-            class="stk-input"
-            ref={(el) => this.textInput = el as HTMLInputElement}
-            onInput={(ev) => this.handleChange(ev)}
-          />
-          <span class="stk-input-suffix" >
+        <span class="stk-input-affix-wrapper">
+         <textarea
+           value={!this.value ? this.defaultValue : this.value}
+           placeholder={this.placeholder}
+           rows={this.rows}
+           disabled={this.disabled}
+           class="stk-input"
+           ref={(el) => this.textInput = el as HTMLTextAreaElement}
+           onInput={(ev) => this.handleChange(ev)}
+         />
+         <span class="stk-input-suffix" >
            {!this.clear
              ? <i class="fa fa-times-circle" onClick={this.handleClearText}/>
              : <i class=""/>
            }
-          </span>
+         </span>
         </span>
            {!this._validator.validate(this.value) ? 
             <span class="validation-error">{this._validator.errorMessage}</span>
-            : null }
+            : null}
         </div>
   );     
   }
 
 }
-

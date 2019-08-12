@@ -27,8 +27,8 @@ export class StkInput {
   @Prop({ reflect: true }) required: boolean;
   @Prop({ reflect: true }) allowClear: boolean = false;
   @Prop({ reflect: true }) maxLength: number;
-  @Prop({ reflect: true }) rows: number = 4;
-  @Prop({ reflect: true }) step: number = 1;
+  @Prop({ reflect: true }) rows: number ;
+  @Prop({ reflect: true }) step: number ;
   @Prop({ reflect: true }) min: number ;
   @Prop({ reflect: true }) max: number ;
   @Prop({ reflect: true }) minsize: number ;
@@ -129,17 +129,31 @@ export class StkInput {
             </div>
           );
         }
-
+    
       case "textarea":
-        return (
-          <textarea
-            value={!this.value ? this.defaultValue : this.value}
-            placeholder={this.placeholder}
-            rows={this.rows}
-            disabled={this.disabled}
-            class="stk-input"
-          />
-        );
+          return (
+            <div>
+            {this.required ? 
+              <label> { this.label } <font color="red"> *</font> </label>
+             :<label> { this.label } </label>
+            }
+            <stk-input-text-area
+                  value={!this.value ? this.defaultValue : this.value}
+                  placeholder={this.placeholder}
+                  disabled={this.disabled}
+                  class={this.orientationclass} 
+                  rows={this.rows}
+                  validator={[ {
+                    name: 'lines',
+                    options: {
+                     params: { rows:this.rows,
+                               message:"El número máximo de renglones es de "+ this.rows 
+                     } 
+                    }
+                   }]}
+            />
+            </div>
+        );    
 
       case "password":
         return (

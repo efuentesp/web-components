@@ -1,7 +1,7 @@
 {
-  "name": "web-components",
+  "name": "softtek-web-components",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "description": "Softtek Web Components Stenciljs",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
@@ -9,7 +9,7 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/web-components/web-components.js",
+  "unpkg": "dist/softtek-web-components/softtek-web-components.js",
   "files": [
     "dist/",
     "loader/"

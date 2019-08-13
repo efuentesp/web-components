@@ -15,20 +15,6 @@ import {
 } from './validators/validator';
 
 export namespace Components {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
-  }
   interface StkInput {
     'allowClear': boolean;
     'defaultValue': string;
@@ -130,12 +116,6 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
-  };
-
   interface HTMLStkInputElement extends Components.StkInput, HTMLStencilElement {}
   var HTMLStkInputElement: {
     prototype: HTMLStkInputElement;
@@ -190,7 +170,6 @@ declare global {
     new (): HTMLStkInputTextAreaElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
     'stk-input': HTMLStkInputElement;
     'stk-input-currency': HTMLStkInputCurrencyElement;
     'stk-input-email': HTMLStkInputEmailElement;
@@ -204,20 +183,6 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface MyComponent extends JSXBase.HTMLAttributes<HTMLMyComponentElement> {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
   interface StkInput extends JSXBase.HTMLAttributes<HTMLStkInputElement> {
     'allowClear'?: boolean;
     'defaultValue'?: string;
@@ -325,7 +290,6 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
     'stk-input': StkInput;
     'stk-input-currency': StkInputCurrency;
     'stk-input-email': StkInputEmail;

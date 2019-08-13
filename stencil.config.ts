@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  namespace: 'web-components',
+  namespace: 'softtek-web-components',
   outputTargets: [
     {
       type: 'dist',

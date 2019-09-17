@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Listen, Event,EventEmitter } from "@stencil/core";
+import { Component, h, Prop, State, Event,EventEmitter } from "@stencil/core";
 import { Validator, defaultValidator, ValidatorEntry } from '../../../../validators/validator';
 import { getValidator } from '../../../../validators/validator.factory';
 
@@ -36,11 +36,10 @@ export class StkInput {
   @Prop({ reflect: true }) maxsize: number ;
   @Prop({ reflect: true }) orientation: string ;//horizontal(same row) or vertical(same column)
   @Prop({ reflect: true }) label: string;
+  @Prop({ reflect: true }) validations: string;
   @State() clear: boolean=false;
   @State() orientationclass: string="";
   textInput!: HTMLInputElement;
-
-
 
   @Prop() validator: Array<string | ValidatorEntry | Validator<string>>;
 
@@ -49,13 +48,19 @@ export class StkInput {
   _validator: Validator<string> = defaultValidator;
 
   componentWillLoad() {
+    //this.parseValidationsProp(this.validations)
+    //console.log(this.validator)
     this._validator = getValidator<string>(this.validator);
+    //console.log(this.validations);
+    
+
   }
 
   componentWillUpdate() {
     this._validator = getValidator<string>(this.validator);
   }
 
+  /*
   handleChange(ev) {
     this.value = ev.target ? ev.target.value : null;
     this.changed.emit(this.value);
@@ -74,8 +79,12 @@ export class StkInput {
   handleClearText = () => {
     this.clear=!this.clear;
     this.textInput.value=null;
-  }
+  } */
 
+  parseValidationsProp(validations: string) {
+    if (validations) this.validator = JSON.parse(validations);
+
+  }
 
   render() {
     if (this.orientation==="horizontal") 
@@ -83,7 +92,19 @@ export class StkInput {
     return this.renderInput();
   }
 
-
+  /*
+  validator={[
+                {
+                 name: 'length',
+                  options: {
+                    params: { min:this.minsize, max:this.maxsize,
+                              message:[{type:"min-val",message:"El número mínimo de caracteres es "+ this.minsize },
+                                       {type:"max-val",message:"El número máximo de caracteres es "+ this.maxsize }]
+                            } 
+                  }
+                }
+                ]}
+  */
   renderInput() {
     switch (this.type) {
       case "text":

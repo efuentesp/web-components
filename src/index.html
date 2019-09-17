@@ -41,6 +41,22 @@
     }
   </style>
 </head>
+<!--
+errors="[Correo electronico existe,invalid email,solo dominio softtek,etx]" 
+        validations='[
+          {
+            "name": "length",
+            "options": {
+              "params": { "min":"2", "max":"10",
+                          "message":[{"type":"min-val", "message":"El número mínimo de caracteres es 2" },
+                                     {"type":"max-val", "message":"El número máximo de caracteres es 10" }]
+                      } 
+            }
+          }
+            name :errors:
+            params: messages:this.errors
+          ]'
+        -->
 <body>
   <h1>Softtek Web Components</h1>
   <br/>

@@ -31,6 +31,7 @@ export namespace Components {
     'rows': number;
     'step': number;
     'type': inputType;
+    'validations': string;
     'validator': Array<string | ValidatorEntry | Validator<string>>;
     'value': string;
   }
@@ -200,6 +201,7 @@ declare namespace LocalJSX {
     'rows'?: number;
     'step'?: number;
     'type'?: inputType;
+    'validations'?: string;
     'validator'?: Array<string | ValidatorEntry | Validator<string>>;
     'value'?: string;
   }

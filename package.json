@@ -1,6 +1,6 @@
 {
   "name": "softtek-web-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Softtek Web Components Stenciljs",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
